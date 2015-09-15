@@ -1,0 +1,274 @@
+\section{Кориснички алати за подешавање система}
+\subsection{Алати за откривање грешака} 
+  \textit{Lustre}  је сложен систем и може се наићи на разнолике проблеме при коришћењу. Треба имати алат за откривање грешака при руци, који може помоћи у схватању проблема и разлога његовог настанка. Разноврсни алати за дијагностику и анализе су доступни приликом отклањања проблема са   \textit{Lustre}  софтвером. Неки од њих се налазе у \textit{Linux} дистрибуцијама, док су
+други  развијени и доступни су у оквиру    \textit{Lustre} пројекта. Следећи  \textit{in-kernel} механизми за отклањање грешака  су уграђени у   \textit{Lustre}  софтвер:
+
+\begin{itemize}
+\item  \textit{Debug logs}
+
+\item  \textit{Debug} позадински сервис
+
+\item  \textit{/proc/sys/lnet/debug}
+\end{itemize}
+Следећи програми су такође укључени у   \textit{Lustre} :
+\begin{itemize}
+\item \textit{lctl}
+
+\item   \textit{Lustre subsystem asserts}
+
+\item \textit{lfs}
+\end{itemize}
+Поред њих, ту су и општи алати који су уграђени у стандардне \textit{Linux} дистрибуције:
+\begin{itemize}
+\item \textit{strace}
+
+\item \textit{/var/log/messages}
+
+\item \textit{Crash dumps}
+
+\item debugfs
+\end{itemize}
+Следећи \textit{logging} алати могу се користити за скупљање информација приликом откривања   \textit{Lustre}  \textit{kernel} проблема.
+\begin{itemize}
+\item \textit{kdump}
+
+\item \textit{netconsole}
+
+\item \textit{netdump}
+\end{itemize}
+
+За отклањање грешака   \textit{Lustre}  система у развојном окружењу користи се \textit{leak\_finder.pl}, док се за отклањање грешака и анализу користе
+\begin{itemize}
+\item \textit{kgdb}
+\item \textit{crash}.
+\end{itemize}
+
+% МИЛОШ: Овде опет фали неки везивни текст. 
+Кориснички програми:
+\begin{itemize}
+\item \textit{mkfs.lustre}
+\item \textit{tunefs.lustre}
+\item \textit{lctl}
+\item \textit{mount.lustre}
+\item \textit{lustre\_rsync}
+\item Додатни кориснички програми за подешавање конфигурације
+\end{itemize}
+
+\subsection{mkfs.lustre}
+\textit{mkfs.lustre} je кориснички програм који форматира диск за   \textit{Lustre} фајл систем.
+
+Синтакса ове команде је:
+\begin{verbatim}
+mkfs.lustre <target_type> [options] device
+\end{verbatim}
+где је \textit{<target\_type>} један од следећих типова:
+
+\begin{itemize}
+\item \textbf{--ost}
+\textit{Object Storage Target (OST)}
+\item \textbf{--mdt}
+\textit{ Metadata Storage Target (MDT)}
+\item \textbf{--network=net }
+врста мреже којом су повезани OST и MDT
+\item \textbf{--mgs }
+\textit{ Configuration Management Service (MGS)} може бити комбинован са  --mdt
+\end{itemize}
+После форматирања диска, диск може бити коришћен од стране   \textit{Lustre} сервиса.
+Када је диск креиран, истом командом се  могу подесити параметри  одговарајућег диска.
+Параметри се додају као \textit{--param} опција \textit{mkfs.lustre} команде.
+
+Параметри \texttt{mkfs.lustre} команде су:
+
+\begin{itemize}
+\item \textbf{\textit{--backfstype=fstype }}
+Поставља посебан формат за резервне копије фајл система (као што су \textit{ext3}, \textit{ldiskfs}).
+\item \textbf{\textit{ --comment }}
+Поставља кориснички коментар.
+\item \textbf{\textit{--device-size=KB }}
+Поставља величину уређаја.
+\item \textbf{\textit{--dryrun }}
+Штампа шта ће бити учињено. Не утиче на операције са диском.
+\item \textbf{\textit{--failnode=nid }}
+Поставља Ид партнера за отказе.
+\item \textbf{\textit{--fsname=filesystem\_name }}
+Поставља назив   \textit{Lustre} фајл система којег ће бити део. Подразумевани је \zn lustre”. Назив може имати највише 8 карактера.
+\item \textbf{\textit{--index=index }}
+Поставља OST или MDT индекс.
+\item \textbf{\textit{--mkfsoptions=opts }}
+Поставља опције за резервне копије.  Опције могу бити постављене овде су ext3.
+\item \textbf{\textit{--mountfsoptions=opts} }
+Поставља опције које се користе приликом монтирања диска.
+\item \textbf{\textit{--mgsnode=nid }}
+Постављају NID за MGS чвор.
+\item \textbf{\textit{--param sys.timeout=40 }}
+Поставља тајм-аут система.
+\item \textbf{ \textit{--param lov.stripesize=2M }}
+Поставља stripe количину меморије.
+\item \textbf{\textit{--param lov.stripecount=2 }}
+Поставља број stripe делова.
+\item \textbf{\textit{--param failover.mode=failout }}
+Враћа грешке диска, уместо да чека на опоравак.
+\item \textbf{\textit{--reformat }}
+Реформатира диск.
+
+\end{itemize}
+
+\subsection{\textit{tunefs.lustre}}
+
+Кориснички програм који мења конфигурацију на   \textit{Lustre} диску је \textit{tunefs.lustre}.
+Синтакса ове команде је:
+\begin{verbatim}
+tunefs.lustre [options] device
+\end{verbatim}
+
+Овом командом се може инсталирати најновија верзија   \textit{Lustre} система, с тим што се приликом извршавања ове команде не брише садржај диска. Измене после извршавања команде се могу уочити након следећег подизања диска.
+
+\textit{tunefs.lustre} поставља параметре додавањем нових или мењањем старих. За брисање старих параметара и додавање нових потребно је покренути:
+\begin{verbatim}
+ tunefs.lustre --erase-params --param=<new parameters>
+ \end{verbatim}
+Параметри \textit{tunefs.lustre} команде су:
+\begin{itemize}
+
+\item \textbf{\textit{--comment=comment }}
+Поставља кориснички коментар.
+\item \textbf{\textit{--dryrun}} 
+Штампа шта ће бити учињено. Не утиче на операције са диском.
+\item \textbf{\textit{--erase-params} }
+Брише све претходне параметре.
+\item \textbf{\textit{--failnode=nid} }
+Поставља Ид партнера за отказе
+\item \textbf{\textit{--fsname=filesystem\_name }}
+Поставља назив   \textit{Lustre}  фајл система којег ће бити део. Подразумевани је \zn \textit{lustre}”.
+\item \textbf{\textit{--index=index }}
+Поставља OST или MDT индекс.
+
+\item \textbf{\textit{--mkfsoptions=opts }}
+Поставља опције за резервне копије. Опције које могу бити постављене овде су ext3.
+\item \textbf{\textit{--network=net }}
+Поставља мрежу преко које су повезани OST/MDT чворови.
+\item \textbf{\textit{--mgs }}
+Додаје сервис за управљање конфигурацијом.
+\item \textbf{\textit{--msgnode=nid,... }}
+Поставља  NID(s) за MGS чвор
+\item \textbf{\textit{--nomgs} }
+Уклања сервис за управљање конфигурацијом.
+\item \textbf{\textit{--quiet }}
+Штампа основних информације.
+
+\item \textbf{\textit{--verbose }}
+
+Штампа више информације.
+\item \textbf{\textit{--writeconf }}
+Брише све конфигурационе дневнике за фајл систем на коме је MDT, а затим их регенерише. Приликом извршавања ове команде може доћи до престанка рада сервера и клијената. У општем случају, ова команда треба да буде извршена само на MDT.
+\end{itemize}
+
+\subsubsection{\textit{lctl}}
+Кориснички програм који се користи за \textit{root} контролу и конфигурацију назива се \textit{lctl}. Са \textit{lctl} може се директно контролисати   \textit{Lustre} , омогућавајући различите конфигурације.
+\begin{verbatim}
+lctl
+lctl --device <OST device number> <command [args]>
+ \end{verbatim}
+Најчешће \textit{lctl} команде су:
+\begin{itemize}
+
+\item \textbf{\textit{dl} }
+Излистава   \textit{Lustre} уређаје по називу и броју. Команда штампа и UUID уређаја. На серверу, UUID је различит за све уређаје, док код клијента UUID је исти за све уређаје који су  део исте тачке подизања фајл система.
+\item \textbf{\textit{device} }
+Селектује задати OBD уређај. Све команде после селектовања уређаја зависиће од њега
+
+\item \textbf{\textit{network <up/down>} }
+Укључује или искључује LNET. Овом командом је могуће и одређивање типа мреже за остале \textit{lctl} LNET команде.
+\item \textbf{\textit{list\_nids} }
+Штампа све NIDs на локалном чвору. 
+\item \textbf{\textit{ping {nid}} }
+Проверава LNET умреженост користећи LNET ping.
+\item \textbf{\textit{help} }
+Штампа листу свих могућих  lctl команди. 
+\item \textbf{\textit{conn\_list }}
+Штампа све умрежене чворове.
+ \item \textbf{\textit{route\_list }}
+ Штампа комплетну табелу рутирања.
+\end{itemize}
+
+\subsection{\textit{mount.lustre}}
+
+Кориснички програм који покреће   \textit{Lustre} клијента или други сервис је 
+\textit{mount.lustre}.
+\begin{verbatim}
+mount -t lustre [-o options] directory
+ \end{verbatim}
+
+Овај програм не треба позивати директно. Ово је помоћни програм програма \textit{mount}. Командом \textit{umount} стопирамо   \textit{Lustre} сервис. Постоје 2 облика подизања фајл система:
+
+\begin{itemize}
+
+\item \textbf{\textit{<mgsspec>:/<fsname>} }
+Подиже   \textit{Lustre} фајл систем контактирајући МGS \textit{<mgsspec>} на директоријуму \textit{<directory>}. Подигнути фајл систем постоји у  \textit{fstab-у} и он је доступан као и остали локални фајл системи.
+
+\item \textbf{\textit{<disk\_device> }}
+Покреће сервис дефинисан \textit{mkfs.lustre} командом на физичком диску \textit{<disk\_device>}. Подигнути фајл систем је доступан само за \textit{df} операције. Постоји у \textit{fstab-у}, показујући да је он у употреби.
+\end{itemize}
+
+\subsection{\textit{ lustre\_rsyncl}}
+\textit{lustre\_rsync} програм синхронизује   \textit{Lustre} фајл систем. Дизајниран је тако да синхронизује систем са другим фајл системом. Тај фајл систем може бити било који други фајл систем. Операција синхронизације је ефикасна и не захтева претрагу измена, већ користи MDT логове измена да идентификује измене у систему. 
+
+Опције овог програма су:
+
+\begin{itemize}
+\item \textbf{\textit{--source=<src> }}
+Путања до \textit{root-а }  \textit{Lustre} система  који ће бити синхронизован.
+\item \textbf{\textit{--target=<tgt> }}
+Путања до фајл система где се синхронизује \textit{root}   \textit{Lustre} система.
+\item \textbf{\textit{--mdt=<mdt> }}
+Извршити синхронизацију MDT-а.
+\item \textbf{\textit{--user=<user id>}}
+Ид корисника логова измена. Да би се вршила синхронизација, корисник мора бити регистрован.
+\item \textbf{\textit{--statuslog=<log> }}
+Лог фајл у коме ће се чувати статус синхронизације.
+\item \textbf{\textit{--dry-run }}
+Штампа излаз \textit{lustre\_rsyncl} команде (\textit{cp}, \textit{mkdir}, итд.).
+\item \textbf{\textit{--abort-on-err }}
+Уколико дође до грешке прекида операцију синнхронизације.
+\end{itemize}
+
+
+\subsection{Додатни кориснички програми за подешавање конфигурације}
+
+\subsubsection{\textit{lustre\_rmmod.sh}}
+Брише све   \textit{Lustre}  и LNET модуле.
+
+\subsubsection{e2scan}
+Кориснички програм који претражује фајл систем у циљу проналаска последње измењених фајлова назива се \textit{e2scan}. \textit{e2scan} користи \textit{libext2fs} да пронађе фајлове са новијим \textit{mtime} и \textit{ctime} од задатог. Користећи овај програм, веома се ефикасно може добити листа фајлова који су измењени.
+
+\begin{verbatim}
+e2scan [options] [-f file] block_device
+ \end{verbatim}
+e2scan скенира све чворове на уређају, проналази измењене фајлове, а затим штампа њихове бројеве.
+
+\subsubsection{llobdstat}
+llobdstat програм приказује OST статистику за задати OST и временски интервал.
+\begin{verbatim}
+llobdstat ost_name [interval]
+ \end{verbatim}
+
+\subsubsection{llstat}
+Кориснички програм за приказивање статистике је \textit{llstat}.
+\begin{verbatim}
+llstat [-c] [-g] [-i interval] stats_file
+ \end{verbatim}
+Опције овог програма су:
+
+\begin{itemize}
+\item \textbf{\textit{-c }}
+Брише фајл у коме се чувају резултати статистике.
+\item \textbf{\textit{-i} }
+Подешава временски интервал.
+\item \textbf{\textit{-g} }
+Подешава графички приказ статистике.
+\item \textbf{\textit{stats\_file }}
+Подешава путању до фајла статистике или кратку референцу MDS или OST.
+\end{itemize}
+
+
+
