@@ -150,8 +150,7 @@ rpm -Uvh e2fsprogs-1.42.7.wc2-7.el6.x86_64.rpm  e2fsprogs-libs-1.42.7.wc2-7.el6.
 rpm -ivh lustre-modules-2.4.2-2.6.32_358.23.2.el6_lustre.x86_64.x86_64.rpm lustre-ldiskfs-4.1.0-2.6.32_358.23.2.el6_lustre.x86_64.x86_64.rpm
 \end{lstlisting}
 
-\item Инсталација   \textit{Lustre} фајл система 
-Како би се   \textit{Lustre} лакше надгледао, потребно је инсталирати \textit{net-snmp-libs (Simple Network Management Protocol (\gls{SNMP}) )} (Листинг 2.7). SNMP је протокол за надгледање мрежне опреме. Net-SNMP је пакет апликација које се користе за имплементацију SNMP користећи IPv4, као и IPv6.
+\item Како би се   \textit{Lustre} лакше надгледао, потребно је инсталирати \textit{net-snmp-libs (Simple Network Management Protocol (\gls{SNMP}) )} (Листинг 2.7). SNMP је протокол за надгледање мрежне опреме. Net-SNMP је пакет апликација које се користе за имплементацију SNMP користећи IPv4, као и IPv6.
 
 \begin{lstlisting}[style=nonumbers,frame=single,caption= Инсталација Net-SNMP-а]
 yum install net-snmp-libs
@@ -265,14 +264,14 @@ yum -y groupinstall "Development Tools"
 
 yum install net-snmp-libs
 
-wget http://downloads.whamcloud.com/public/lustre/latest-maintenance-release/el6/client/RPMS/x86\_64/
-lustre-client-modules-2.4.2-2.6.32\_358.23.2.el6.x86\_64.x86\_64.rpm
+wget http://downloads.whamcloud.com/public/lustre/latest-maintenance-release/el6/client/RPMS/x86_64/
+lustre-client-modules-2.4.2-2.6.32_358.23.2.el6.x86_64.x86_64.rpm
 
-http://downloads.whamcloud.com/public/lustre/latest-maintenance-release/el6/client/RPMS/x86\_64/
-lustre-client-2.4.2-2.6.32\_358.23.2.el6.x86\_64.x86\_64.rpm
+http://downloads.whamcloud.com/public/lustre/latest-maintenance-release/el6/client/RPMS/x86_64/
+lustre-client-2.4.2-2.6.32_358.23.2.el6.x86_64.x86_64.rpm
 
-yum localinstall  lustre-client-2.4.2-2.6.32\_358.23.2.el6.x86\_64.x86\_64.rpm 
-lustre-client-modules-2.4.2-2.6.32\_358.23.2.el6.x86\_64.x86\_64.rpm 
+yum localinstall  lustre-client-2.4.2-2.6.32_358.23.2.el6.x86_64.x86_64.rpm 
+lustre-client-modules-2.4.2-2.6.32_358.23.2.el6.x86_64.x86_64.rpm 
 
 mkdir /lustre
 

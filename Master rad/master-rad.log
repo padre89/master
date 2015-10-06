@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.5)  15 SEP 2015 15:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.5)  6 OCT 2015 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1699,73 +1699,73 @@ Overfull \hbox (33.37506pt too wide) in paragraph at lines 149--149
  []
 
 [18]
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 156--156
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 155--155
 [][][][][][][] 
  []
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 170--170
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 169--169
 [][][][][][][] 
  []
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 180--180
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 179--179
 [][][][][][][] 
  []
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 194--194
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 193--193
 [][][][][][][] 
  []
 
 
-Package Listings Warning: Text dropped after begin of listing on input line 194
+Package Listings Warning: Text dropped after begin of listing on input line 193
 .
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 207--207
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 206--206
 [][][][][][][] 
  []
 
 [19]
-Overfull \hbox (41.19124pt too wide) in paragraph at lines 212--213
+Overfull \hbox (41.19124pt too wide) in paragraph at lines 211--212
 []\T2A/cmr/m/n/10.95 У за-ви-сно-сти од типа сер-ви-сног чвора по-кре-нути ко-м
 анду и кре-и-рати ло-гичке \T2A/cmr/m/it/10.95 volumes\T2A/cmr/m/n/10.95 (Листи
 нг
  []
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 214--214
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 213--213
 [][][][][][][] 
  []
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 225--225
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 224--224
 [][][][][][][] 
  []
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 233--233
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 232--232
 [][][][][][][] 
  []
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 245--245
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 244--244
 [][][][][][][] 
  []
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 254--254
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 253--253
 [][][][][][][] 
  []
 
 
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 263--263
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 262--262
 [][][][][][][] 
  []
 
 [20]
-Overfull \hbox (33.37506pt too wide) in paragraph at lines 289--289
+Overfull \hbox (33.37506pt too wide) in paragraph at lines 288--288
 [][][][][][][] 
  []
 
@@ -2151,7 +2151,7 @@ xmf-var/fonts/pk/ljfour/lh/lh-t2a/labx2074.600pk> </home/padre/.texmf-var/fonts
 /lh-t2a/lacc1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmr10.pfb>
-Output written on master-rad.pdf (65 pages, 1911332 bytes).
+Output written on master-rad.pdf (65 pages, 1911297 bytes).
 PDF statistics:
  1328 PDF objects out of 1440 (max. 8388607)
  246 compressed objects within 3 object streams
