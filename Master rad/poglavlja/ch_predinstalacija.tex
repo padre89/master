@@ -28,7 +28,7 @@
 
 \item Обезбедити синхронизацију сатова. Lustre користи сатове за timestamps. Уколико сатови нису синхронизовани, доћиће до проблема код праћења рада система. Биће отежано отклањање грешака  и корелисање дневника. Препоручује се  \textit{Network Time Protocol (\gls{NTP})}.
 
-\item Користити јединствени приступ фајловима на свим кластер чворовима. Користити исти користички ID (UID) и групни ID (GID). 
+\item Користити јединствени приступ фајловима на свим кластер чворовима. Користити исти кориснички ID (UID) и групни ID (GID). 
 
 \item Искључити  \textit{Security-Enhanced Linux (\gls{SELinux})} на серверима и клијентима.   \textit{Lustre}  не подржава SELinux. Зато је потребно искључити \textit{SELinux} на свим   \textit{Lustre} чворовима, као и остале безбедносне екстензије, на пример \textit{Novell AppArmor} и \textit{network packet filtering tools (iptables)}.
 \end{itemize}

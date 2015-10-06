@@ -150,7 +150,7 @@ rpm -Uvh e2fsprogs-1.42.7.wc2-7.el6.x86_64.rpm  e2fsprogs-libs-1.42.7.wc2-7.el6.
 rpm -ivh lustre-modules-2.4.2-2.6.32_358.23.2.el6_lustre.x86_64.x86_64.rpm lustre-ldiskfs-4.1.0-2.6.32_358.23.2.el6_lustre.x86_64.x86_64.rpm
 \end{lstlisting}
 
-\item Како би се   \textit{Lustre} лакше надгледао, потребно је инсталирати \textit{net-snmp-libs (Simple Network Management Protocol (\gls{SNMP}) )} (Листинг 2.7). SNMP је протокол за надгледање мрежне опреме. Net-SNMP је пакет апликација које се користе за имплементацију SNMP користећи IPv4, као и IPv6.
+\item Како би се \textit{Lustre} лакше надгледао, потребно је инсталирати \textit{net-snmp-libs (Simple Network Management Protocol (\gls{SNMP}) )} (Листинг 2.7). SNMP је протокол за надгледање мрежне опреме. Net-SNMP је пакет апликација које се користе за имплементацију SNMP користећи IPv4, као и IPv6.
 
 \begin{lstlisting}[style=nonumbers,frame=single,caption= Инсталација Net-SNMP-а]
 yum install net-snmp-libs
@@ -162,15 +162,15 @@ rpm -ivh lustre-2.4.2-2.6.32_358.23.2.el6_lustre.x86_64.x86_64.rpm
 \end{lstlisting}
 
 
-\item Искључивање \textit{SELinux}-а 
+\item Искључивање \textit{SELinux}-а - 
 Да би се   \textit{Lustre} покренуо потребно је искључити \textit{Security-Enhanced Linux (SELinux)} (Листинг 2.8). \textit{SELinux} је безбедоносни кернел модул.
 У фајл \textit{/boot/grub/grub.conf} додати selinux=0.
 
 \begin{lstlisting}[style=nonumbers,frame=single,caption= Команде за искључивање \textit{SELinux}-а]
 
-kernel /boot/vmlinuz-2.6.32-358.23.2.el6\_lustre.x86\_64 ro root=UUID=2c8a0af6-545a-4761-9e41-74cfe026385e 
-rd\_NO\_LUKS rd\_NO\_LVM LANG=en\_US.UTF-8 rd\_NO\_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto  KEYBOARDTYPE=pc
- KEYTABLE=us rd\_NO\_DM rhgb quiet selinux=0
+kernel /boot/vmlinuz-2.6.32-358.23.2.el6_lustre.x86_64 ro root=UUID=2c8a0af6-545a-4761-9e41-74cfe026385e 
+rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto  KEYBOARDTYPE=pc
+ KEYTABLE=us rd_NO_DM rhgb quiet selinux=0
 
 reboot 
 \end{lstlisting}
